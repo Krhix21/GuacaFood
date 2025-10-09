@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriAccess - Alimentación Saludable al Alcance de Todos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-pattern {
+            background-color: #f0fdf4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        * { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-2 rounded-xl">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">NutriAccess</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#caracteristicas" class="text-gray-600 hover:text-green-600 transition-colors">Características</a>
+                    <a href="#como-funciona" class="text-gray-600 hover:text-green-600 transition-colors">Cómo Funciona</a>
+                    <a href="#impacto" class="text-gray-600 hover:text-green-600 transition-colors">Impacto</a>
+                    <a href="#precios" class="text-gray-600 hover:text-green-600 transition-colors">Precios</a>
+                    <a href="#descargar" class="bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
+                        Descargar App
+                    </a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-pattern pt-24 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <div class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        🌱 Impacto Social y Ambiental
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Alimentación <span class="gradient-text">Saludable</span> al Alcance de Todos
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Ahorra hasta 50% en frutas y verduras frescas mientras reduces el desperdicio de alimentos. Come sano, ahorra dinero y cuida el planeta.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#descargar" class="bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Descargar Gratis
+                        </a>
+                        <a href="#como-funciona" class="bg-white text-green-600 border-2 border-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-all">
+                            Ver Demo
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-8 mt-8 pt-8 border-t border-gray-200">
+                        <div>
+                            <p class="text-3xl font-bold text-gray-900">15K+</p>
+                            <p class="text-sm text-gray-600">Usuarios activos</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gray-900">42%</p>
+                            <p class="text-sm text-gray-600">Ahorro promedio</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-gray-900">80 ton</p>
+                            <p class="text-sm text-gray-600">Comida salvada</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative float min-h-full h-full pb-32"> 
+                    <div class="absolute top-0 right-20 z-20 bg-white rounded-3xl shadow-2xl p-4 w-2/5 transform rotate-6 hover:scale-105 transition-transform duration-500">
+                        <img src="marketplace.jpg" alt="Marketplace de NutriAccess" class="rounded-2xl shadow-lg w-full"> 
+                    </div>
+
+                    <div class="absolute bottom-10 left-10 z-10 bg-white rounded-3xl shadow-2xl p-4 w-2/5 transform -rotate-6 hover:scale-105 transition-transform duration-500">
+                        <img src="alimento.jpg" alt="Planificador de comidas de NutriAccess" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    
+                    <div class="absolute top-10 -left-10 bg-yellow-400 text-yellow-900 px-6 py-3 rounded-2xl shadow-lg font-bold z-30 transform -rotate-12">
+                        -50% 🎉
+                    </div>
+                    <div class="absolute bottom-0 -right-10 bg-green-500 text-white px-6 py-3 rounded-2xl shadow-lg font-bold z-30 transform rotate-12">
+                        100% Natural 🥬
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="caracteristicas" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    ¿Por qué <span class="gradient-text">NutriAccess</span>?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Una solución integral que combina tecnología, sostenibilidad y acceso equitativo a alimentos saludables
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                        🛒
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Productos Imperfectos</h3>
+                    <p class="text-gray-700 mb-4">
+                        Frutas y verduras con formas irregulares pero igualmente frescas y nutritivas. ¡Belleza interior que cuenta!
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-600">✓</span> Hasta 50% más económico
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-600">✓</span> 100% frescos y locales
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-green-600">✓</span> Certificación de calidad
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="bg-blue-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                        📅
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Planificador Inteligente</h3>
+                    <p class="text-gray-700 mb-4">
+                        IA que sugiere menús nutritivos basados en tu presupuesto, preferencias y necesidades nutricionales.
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2">
+                            <span class="text-blue-600">✓</span> Menús personalizados
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-blue-600">✓</span> Control de presupuesto
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-blue-600">✓</span> Información nutricional
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="bg-purple-500 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-3xl">
+                        📚
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Educación Alimentaria</h3>
+                    <p class="text-gray-700 mb-4">
+                        Aprende a comer mejor con cursos, recetas y consejos de nutricionistas profesionales.
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2">
+                            <span class="text-purple-600">✓</span> Cursos gratuitos
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-purple-600">✓</span> Recetas saludables
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-purple-600">✓</span> Tips de ahorro
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="py-20 px-4 bg-gradient-to-b from-green-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Cómo <span class="gradient-text">Funciona</span>
+                </h2>
+                <p class="text-xl text-gray-600">Simple, rápido y efectivo en solo 3 pasos</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="text-center relative">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">
+                        1
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Explora el Mercado</h3>
+                        <p class="text-gray-600">
+                            Navega por productos frescos e imperfectos con descuentos de hasta 50%. Filtra por tipo, precio o etiquetas ecológicas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center relative">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">
+                        2
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+                        <div class="text-6xl mb-4">🤖</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Planifica Tus Comidas</h3>
+                        <p class="text-gray-600">
+                            Nuestro planificador inteligente sugiere menús nutritivos según tu presupuesto y preferencias alimentarias.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center relative">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-lg">
+                        3
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all">
+                        <div class="text-6xl mb-4">🚚</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Recibe en Casa</h3>
+                        <p class="text-gray-600">
+                            Entrega rápida y segura. Disfruta de alimentos frescos, ahorra dinero y reduce el desperdicio alimentario.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="impacto" class="py-20 px-4 bg-gradient-to-br from-green-600 to-green-700 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Nuestro Impacto en Colombia</h2>
+                <p class="text-xl text-green-100">Juntos estamos creando un sistema alimentario más justo y sostenible</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center hover:bg-white/20 transition-all">
+                    <div class="text-5xl mb-4">👥</div>
+                    <p class="text-5xl font-bold mb-2">15,420</p>
+                    <p class="text-green-100">Familias beneficiadas</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center hover:bg-white/20 transition-all">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <p class="text-5xl font-bold mb-2">80 ton</p>
+                    <p class="text-green-100">Alimentos salvados</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center hover:bg-white/20 transition-all">
+                    <div class="text-5xl mb-4">💰</div>
+                    <p class="text-5xl font-bold mb-2">$890M</p>
+                    <p class="text-green-100">Ahorrados en total</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center hover:bg-white/20 transition-all">
+                    <div class="text-5xl mb-4">🌱</div>
+                    <p class="text-5xl font-bold mb-2">45 ton</p>
+                    <p class="text-green-100">CO₂ evitado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Lo que Dicen <span class="gradient-text">Nuestros Usuarios</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl">
+                            👩
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">María González</p>
+                            <p class="text-sm text-gray-600">Mamá de 3 hijos</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700 italic">
+                        "Ahorro más de $200.000 al mes comprando productos de calidad. Mis hijos comen más frutas y verduras ahora. ¡Increíble!"
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-3xl">
+                            👨
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Carlos Ramírez</p>
+                            <p class="text-sm text-gray-600">Estudiante</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700 italic">
+                        "Con mi presupuesto limitado, puedo comer sano y nutritivo. El planificador de comidas es genial para optimizar gastos."
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 hover:shadow-xl transition-all">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center text-3xl">
+                            👵
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Ana Martínez</p>
+                            <p class="text-sm text-gray-600">Pensionada</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-500 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700 italic">
+                        "Me encanta que apoyen a los agricultores locales y reduzcan el desperdicio. ¡Consumo consciente y económico!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="precios" class="py-20 px-4 bg-gradient-to-b from-green-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Planes <span class="gradient-text">Flexibles</span>
+                </h2>
+                <p class="text-xl text-gray-600">Elige el plan que mejor se adapte a tus necesidades</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Básico</h3>
+                    <p class="text-gray-600 mb-6">Perfecto para empezar</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-gray-900">$0</span>
+                        <span class="text-gray-600">/mes</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Acceso al marketplace
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Descuentos hasta 40%
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> 5 recetas gratis/mes
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-400">
+                            <span class="text-gray-300 text-xl">✗</span> Planificador inteligente
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-200 text-gray-700 py-4 rounded-full font-semibold hover:bg-gray-300 transition-all">
+                        Descargar Gratis
+                    </button>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-3xl p-8 shadow-2xl transform scale-105 border-4 border-yellow-400 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-900 px-6 py-1 rounded-full text-sm font-bold">
+                        MÁS POPULAR
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Plus</h3>
+                    <p class="text-green-100 mb-6">El más elegido</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-white">$15K</span>
+                        <span class="text-green-100">/mes</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-2 text-white">
+                            <span class="text-yellow-400 text-xl">✓</span> Todo lo del plan Básico
+                        </li>
+                        <li class="flex items-center gap-2 text-white">
+                            <span class="text-yellow-400 text-xl">✓</span> Descuentos hasta 50%
+                        </li>
+                        <li class="flex items-center gap-2 text-white">
+                            <span class="text-yellow-400 text-xl">✓</span> Planificador inteligente
+                        </li>
+                        <li class="flex items-center gap-2 text-white">
+                            <span class="text-yellow-400 text-xl">✓</span> Envío gratis +$30K
+                        </li>
+                        <li class="flex items-center gap-2 text-white">
+                            <span class="text-yellow-400 text-xl">✓</span> Recetas ilimitadas
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-green-600 py-4 rounded-full font-semibold hover:bg-green-50 transition-all transform hover:scale-105">
+                        Comenzar Ahora
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border-2 border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                    <p class="text-gray-600 mb-6">Experiencia completa</p>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-gray-900">$25K</span>
+                        <span class="text-gray-600">/mes</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Todo lo del plan Plus
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Asesoría nutricional
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Envío gratis siempre
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Acceso prioritario
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <span class="text-green-600 text-xl">✓</span> Cursos exclusivos
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-4 rounded-full font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                        Elegir Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="descargar" class="py-20 px-4 bg-gradient-to-br from-green-600 via-green-500 to-emerald-600 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="text-6xl mb-6">🌱</div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Comienza Tu Viaje Hacia una Alimentación Más Saludable
+            </h2>
+            <p class="text-xl text-green-100 mb-8">
+                Únete a miles de colombianos que ya están ahorrando dinero y reduciendo el desperdicio de alimentos
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center mb-8">
+                <a href="#" class="bg-black text-white px-8 py-4 rounded-2xl font-semibold hover:bg-gray-900 transition-all flex items-center gap-3 shadow-2xl">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <div class="text-left">
+                        <p class="text-xs">Descargar en</p>
+                        <p class="text-lg font-bold">App Store</p>
+                    </div>
+                </a>
+                <a href="#" class="bg-black text-white px-8 py-4 rounded-2xl font-semibold hover:bg-gray-900 transition-all flex items-center gap-3 shadow-2xl">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    <div class="text-left">
+                        <p class="text-xs">Disponible en</p>
+                        <p class="text-lg font-bold">Google Play</p>
+                    </div>
+                </a>
+            </div>
+            <p class="text-green-100 text-sm">
+                ✓ Descarga gratuita • ✓ Sin tarjeta de crédito • ✓ Cancela cuando quieras
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-2 rounded-xl">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-bold text-white">NutriAccess</span>
+                    </div>
+                    <p class="text-sm mb-4">
+                        Democratizando el acceso a alimentos saludables en Colombia.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-green-500 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-green-500 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-green-500 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Producto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#caracteristicas" class="hover:text-green-500 transition-colors">Características</a></li>
+                        <li><a href="#precios" class="hover:text-green-500 transition-colors">Precios</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Marketplace</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Planificador</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Compañía</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Carreras</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Prensa</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Soporte</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Centro de Ayuda</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Contacto</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Términos</a></li>
+                        <li><a href="#" class="hover:text-green-500 transition-colors">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">
+                    © 2025 NutriAccess. Todos los derechos reservados. Hecho con 💚 en Colombia.
+                </p>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="hover:text-green-500 transition-colors">Política de Privacidad</a>
+                    <a href="#" class="hover:text-green-500 transition-colors">Términos de Uso</a>
+                    <a href="#" class="hover:text-green-500 transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/573166409744" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/50 transition-all transform hover:scale-110 z-50">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
