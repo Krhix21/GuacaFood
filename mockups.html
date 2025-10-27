@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriAccess - Mockups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .mockup-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+
+        .mockup-card:nth-child(1) { animation-delay: 0.1s; }
+        .mockup-card:nth-child(2) { animation-delay: 0.2s; }
+        .mockup-card:nth-child(3) { animation-delay: 0.3s; }
+        .mockup-card:nth-child(4) { animation-delay: 0.4s; }
+        .mockup-card:nth-child(5) { animation-delay: 0.5s; }
+        .mockup-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .mockup-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        /* Carrusel de imágenes */
+        .carousel-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .mockup-image {
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .mockup-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Controles del carrusel */
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            margin-left: 10px;
+        }
+
+        .carousel-btn.next {
+            margin-right: 10px;
+        }
+
+        /* Indicadores de puntos */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #667eea;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .mockup-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .mockup-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .image-counter {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* Modal para ver imagen en grande */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .close {
+                right: 20px;
+                top: 20px;
+            }
+
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button">← Volver al inicio</a>
+        
+        <header>
+            <h1>NutriAccess Mockups</h1>
+            <p>Diseños de interfaz de usuario - Figma Prototypes</p>
+        </header>
+
+        <div class="gallery">
+            <!-- Card con múltiples imágenes: Login -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="login">
+                        <span class="image-counter"><span class="current">1</span>/<span class="total">3</span></span>
+                        <div class="carousel-images">
+                            <img src="mockup1.png" alt="Login - Email" class="mockup-image" onclick="openModal(this)">
+                            <img src="mockup1-1.png" alt="Login - Registro" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev" onclick="moveCarousel('login', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('login', 1)">›</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" data-dots="login"></div>
+                </div>
+                <h3 class="mockup-title">Pantalla de Login</h3>
+                <p class="mockup-description">Interfaz de inicio de sesión con opciones de autenticación por correo, registro y recuperación de contraseña.</p>
+            </div>
+
+            <!-- Card con una sola imagen: Bienvenida -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="welcome">
+                        <div class="carousel-images">
+                            <img src="mockup2.png" alt="Pantalla de Bienvenida" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mockup-title">Bienvenida</h3>
+                <p class="mockup-description">Onboarding que presenta las características principales de GuacaFood.</p>
+            </div>
+
+            <!-- Card con múltiples imágenes: Catálogo -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="catalog">
+                        <span class="image-counter"><span class="current">1</span>/<span class="total">4</span></span>
+                        <div class="carousel-images">
+                            <img src="mockup3.png" alt="Catálogo - Vista principal" class="mockup-image" onclick="openModal(this)">
+                            <img src="mockup3-3.png" alt="Catálogo - Detalles producto" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev" onclick="moveCarousel('catalog', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('catalog', 1)">›</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" data-dots="catalog"></div>
+                </div>
+                <h3 class="mockup-title">Catálogo de Productos</h3>
+                <p class="mockup-description">Navegación de productos frescos con filtros, búsqueda y vista de detalles.</p>
+            </div>
+
+            <!-- Card simple: Planificador -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="planner">
+                        <div class="carousel-images">
+                            <img src="mockup4.png" alt="Planificador de Menús" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mockup-title">Planificador de Menús</h3>
+                <p class="mockup-description">Sugerencias inteligentes de menús basadas en IA y preferencias del usuario.</p>
+            </div>
+
+            <!-- Card simple: Educación -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="cart">
+                        <div class="carousel-images">
+                            <img src="mockup5.png" alt="Carrito de Compras" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mockup-title">Educación</h3>
+                <p class="mockup-description">Recursos para una alimentación saludable.</p>
+            </div>
+			
+			<!-- Card simple: Carrito -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="cart">
+                        <div class="carousel-images">
+                            <img src="mockup6.png" alt="Carrito de Compras" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mockup-title">Carrito de Compras</h3>
+                <p class="mockup-description">Vista del carrito con resumen de ahorros y opciones de pago.</p>
+            </div>
+
+            <!-- Card simple: Perfil -->
+            <div class="mockup-card">
+                <div class="carousel-container">
+                    <div class="carousel" data-carousel="perfil">
+                        <span class="image-counter"><span class="current">1</span>/<span class="total">4</span></span>
+                        <div class="carousel-images">
+                            <img src="mockup7.png" alt="Perfil - Vista principal" class="mockup-image" onclick="openModal(this)">
+                            <img src="mockup7-7.png" alt="Perfil - Edición" class="mockup-image" onclick="openModal(this)">
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev" onclick="moveCarousel('perfil', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('perfil', 1)">›</button>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" data-dots="perfil"></div>
+                </div>
+                <h3 class="mockup-title">Perfil de Usuario</h3>
+                <p class="mockup-description">Gestión de cuenta, preferencias y estadísticas de impacto ambiental.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para imagen ampliada -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Inicializar carruseles
+        const carousels = {};
+
+        function initCarousels() {
+            document.querySelectorAll('[data-carousel]').forEach(carousel => {
+                const name = carousel.getAttribute('data-carousel');
+                const images = carousel.querySelectorAll('.mockup-image');
+                
+                carousels[name] = {
+                    currentIndex: 0,
+                    totalImages: images.length,
+                    element: carousel
+                };
+
+                // Crear puntos indicadores solo si hay más de una imagen
+                if (images.length > 1) {
+                    const dotsContainer = document.querySelector(`[data-dots="${name}"]`);
+                    for (let i = 0; i < images.length; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'dot' + (i === 0 ? ' active' : '');
+                        dot.onclick = () => goToSlide(name, i);
+                        dotsContainer.appendChild(dot);
+                    }
+                    
+                    // Actualizar contador
+                    updateCounter(name);
+                } else {
+                    // Ocultar controles si solo hay una imagen
+                    const controls = carousel.querySelector('.carousel-controls');
+                    const counter = carousel.querySelector('.image-counter');
+                    if (controls) controls.style.display = 'none';
+                    if (counter) counter.style.display = 'none';
+                }
+            });
+        }
+
+        function moveCarousel(name, direction) {
+            const carousel = carousels[name];
+            carousel.currentIndex += direction;
+            
+            if (carousel.currentIndex < 0) {
+                carousel.currentIndex = carousel.totalImages - 1;
+            } else if (carousel.currentIndex >= carousel.totalImages) {
+                carousel.currentIndex = 0;
+            }
+            
+            updateCarousel(name);
+        }
+
+        function goToSlide(name, index) {
+            carousels[name].currentIndex = index;
+            updateCarousel(name);
+        }
+
+        function updateCarousel(name) {
+            const carousel = carousels[name];
+            const imagesContainer = carousel.element.querySelector('.carousel-images');
+            const offset = -carousel.currentIndex * 100;
+            imagesContainer.style.transform = `translateX(${offset}%)`;
+            
+            // Actualizar puntos
+            const dots = document.querySelectorAll(`[data-dots="${name}"] .dot`);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentIndex);
+            });
+            
+            // Actualizar contador
+            updateCounter(name);
+        }
+
+        function updateCounter(name) {
+            const carousel = carousels[name];
+            const counter = carousel.element.querySelector('.image-counter');
+            if (counter) {
+                counter.querySelector('.current').textContent = carousel.currentIndex + 1;
+                counter.querySelector('.total').textContent = carousel.totalImages;
+            }
+        }
+
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Navegación con teclado en carruseles
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                const direction = event.key === 'ArrowLeft' ? -1 : 1;
+                // Navegar el primer carrusel visible (puedes mejorar esto)
+                Object.keys(carousels).forEach(name => {
+                    if (carousels[name].totalImages > 1) {
+                        moveCarousel(name, direction);
+                    }
+                });
+            }
+        });
+
+        // Inicializar al cargar la página
+        window.addEventListener('DOMContentLoaded', initCarousels);
+    </script>
+</body>
+</html>
